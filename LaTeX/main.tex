@@ -1,0 +1,271 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{A Data-Driven Approach to Developing Interactive Game Modes for Twitch-Enabled Viewer Engagement}
+
+\author{
+\IEEEauthorblockN{Stefan-Daniel Horvath}
+\IEEEauthorblockA{\textit{Syddansk Universitet}\\
+    Odense, Denmark\\
+    sthor23@student.sdu.dk\\
+    +45 22 53 23 98}
+\and
+\IEEEauthorblockN{Supervised by Dr. A D}
+\IEEEauthorblockA{SDU Metaverse Lab\\
+    \textit{Syddansk Universitet}\\
+    Odense, Denmark\\
+    a...@mmmi.sdu.dk}
+}
+
+\maketitle
+
+% Page numbering
+\thispagestyle{plain}
+\pagestyle{plain}
+\pagenumbering{arabic}
+
+\begin{abstract}
+% TODO: Write a concise summary (150-250 words) of your research, including the problem (indie game visibility), objectives (designing Twitch-integrated game modes), methods (surveys, experiments), key findings (from surveys and planned experiments), and implications (for indie developers and the gaming industry).
+\end{abstract}
+
+\begin{IEEEkeywords}
+Twitch integration, audience engagement, interactive design, gaming, real-time interaction, data-driven content, indie game development, real-time engagement, streaming platforms
+\end{IEEEkeywords}
+
+\tableofcontents
+
+\section{Introduction}\label{sec:intro}
+
+The independent game industry has witnessed substantial expansion in recent years, largely propelled by digital distribution platforms such as Steam. Statistical data reveals that in 2023, over 6,000 games on Steam were categorized as ``indie,'' with more than 5,500 additional releases by the midpoint of 2024. This rapid increase in the number of available games has led to a highly competitive environment where gaining visibility poses a significant challenge for independent developers. The struggle for discoverability is not limited to indie developers alone; even well-received titles from larger studios, such as \textit{Titanfall 2}, have experienced commercial difficulties attributed to factors like poor launch timing and an oversaturated market. This highlights a broader issue within the gaming industry: the difficulty of making a game stand out amidst the abundance of options available to consumers. The sheer volume of indie game releases on platforms like Steam year after year creates an intensely competitive landscape where effective strategies for gaining attention are increasingly vital for success. This trend suggests that the competition for player attention and marketing resources will only intensify, underscoring the importance of robust visibility strategies for indie developers. Furthermore, the commercial challenges faced by \textit{Titanfall 2}, despite its strong reception, indicate that even established developers with significant marketing budgets are not immune to the difficulties of market saturation and timing. This example emphasizes that the problem of achieving visibility is not solely a concern for indie developers with limited resources but rather a systemic issue in the gaming market.
+
+In parallel, live streaming platforms, most notably Twitch, have emerged as critical channels for game discovery and fostering engagement with players. Twitch boasts millions of daily viewers and streams billions of hours of content annually. The platform has demonstrated its capacity to elevate games to prominence, with notable indie successes like \textit{Among Us} and \textit{Lethal Company} achieving widespread popularity largely due to viral exposure through Twitch streamers and content creators. These instances underscore the significant potential of Twitch as a marketing tool, particularly for indie developers who often lack the financial resources for traditional advertising methods. The success of indie titles such as \textit{Among Us} and \textit{Lethal Company} clearly illustrates the powerful influence of Twitch in driving popularity. These games gained significant traction through organic growth on the platform, propelled by streamer adoption and viewer engagement, showcasing Twitch's unique ability to amplify an indie game's reach without substantial upfront marketing investments. Moreover, the extensive user base of Twitch and the vast amount of content consumed on the platform indicate a substantial potential audience for indie games, provided that developers can effectively engage this community.
+
+Despite the evident potential, many indie developers are not fully utilizing Twitch's interactive features, which include viewer voting, real-time event triggers, and dynamic leaderboards. These features could significantly enhance viewer engagement and boost a game's visibility, especially around its initial launch. The underutilization may stem from a lack of comprehensive understanding of the Twitch ecosystem among some developers and investors, particularly regarding the influential role of streamers and the intricate social dynamics that govern their interactions with games. Misconceptions, such as the idea of charging streamers for access to Twitch-integrated features, pose a risk of alienating this vital community, potentially undermining a game's visibility. These gaps in knowledge highlight the necessity for both technical solutions and educational guidance aimed at helping indie developers maximize the benefits offered by Twitch. The failure of many indie developers to fully utilize the interactive features available on Twitch represents a significant missed opportunity for enhancing both viewer engagement and overall game visibility. Twitch provides a suite of tools specifically designed to foster interaction between streamers and their audiences. Indie developers who do not leverage these functionalities are neglecting a key strength of the platform, which could limit their game's potential reach and impact. Furthermore, misunderstandings surrounding the dynamics between developers and streamers, such as the counterproductive strategy of attempting to charge streamers for access to integrated features, can negatively impact an indie game's visibility. Streamers are pivotal influencers within the Twitch ecosystem, and alienating them through unfavorable business proposals can discourage them from featuring a game, thereby reducing its exposure to a large and relevant audience.
+
+This study aims to explore how game modes specifically designed with Twitch integrations can address the visibility challenges faced by indie developers, while also considering the social and economic dynamics of engaging with Twitch streamers. Conducted in collaboration with Runic Dices Entertainment, a Danish indie game company, this research focuses on the design, development, and evaluation of a prototype game mode that leverages Twitch's interactive capabilities. The central research question driving this work is: \textbf{Does a game mode designed specifically around Twitch integrations benefit the popularity of an indie game?} Supporting questions include: \textit{What specific Twitch integration features most enhance viewer engagement?}, \textit{How do these features influence player and streamer perceptions of the game?}, and \textit{How can developers navigate streamer dynamics to maximize adoption of Twitch-integrated features?} The hypothesis posits that integrating interactive Twitch features, combined with an understanding of streamer incentives, will lead to increased viewer engagement, greater streamer interest, and, consequently, enhanced game visibility.
+
+The thesis is organized as follows: Section~\ref{sec:lit} provides a literature review on Twitch integrations, their impact on viewer engagement, and the social dynamics of streamer-developer relationships; Section~\ref{sec:methods} describes the methodology, including prototype development and evaluation plans; Section~\ref{sec:results} presents initial findings and experimental outcomes; Section~\ref{sec:discussion} interprets the results in the context of indie game development; and Section~\ref{sec:conclusion} summarizes contributions and suggests future research directions.
+
+\subsection{Problem Statement}
+Indie game developers face significant challenges in gaining visibility in a competitive market. Leveraging Twitch's interactive features, alongside an understanding of streamer dynamics, could enhance viewer engagement and increase game popularity.
+
+\subsection{Research Gap}
+While research exists on Twitch integrations in esports, there is limited focus on designing game modes with Twitch features for indie games at launch to boost visibility and engagement. Furthermore, there is a lack of guidance on navigating the social and economic dynamics between developers and Twitch streamers, a critical factor for successful adoption.
+
+\section{Literature Review}\label{sec:lit}
+
+The literature review process for this study involved a systematic search across academic databases such as SDU's Online Library, IEEE Xplore, and Google Scholar. The search strategy utilized keywords including ``Twitch integration,'' ``viewer engagement,'' ``indie game visibility,'' ``esports analytics,'' and ``streamer influence.'' The selection criteria prioritized peer-reviewed articles and conference proceedings published within the last ten years that were relevant to interactive streaming features, audience engagement, and indie game marketing. This process revealed significant research on Twitch integrations within the context of esports but highlighted a noticeable gap in studies focusing on indie game environments, which subsequently guided the development of the prototype.
+
+Research indicates that indie games often face challenges in achieving success due to a lack of a well-defined marketing strategy and insufficient financial resources allocated to advertising. A common mistake among indie developers is the belief that the inherent quality of their game will be sufficient to attract players. However, in the current competitive market, a detailed marketing plan is essential to inform potential players about the game's existence and value. Furthermore, many indie developers fail to effectively engage with the appropriate channels to reach their target audience, particularly overlooking the potential of streaming platforms like Twitch. Marketing, in a broader sense, encompasses not only promotional activities but also the fundamental aspects of the product itself and thorough market research. It is also acknowledged that the failure of some indie games can be attributed to the fact that they simply do not meet the standards of quality expected by players. Therefore, a comprehensive approach to indie game success requires not only a well-developed game but also a strategic marketing plan that includes leveraging platforms like Twitch.
+
+Twitch has become an increasingly important platform for game discovery and fostering player engagement. The platform's power in driving visibility and sales for indie games is evident in the success stories of titles such as Punch Club and Hurtworld. The case of Punch Club demonstrates how a pre-launch Twitch strategy, including a ``Twitch plays'' event, can generate significant initial buzz and lead to substantial sales conversions. Similarly, Hurtworld's success highlights the considerable impact that mid-tier streamers can have on driving game sales, often accounting for a larger proportion of sales than top-tier streamers. The sustained impact of influencer streaming is also crucial, with a significant percentage of sales attributed to broadcasters who consistently stream a game over multiple days and for extended periods. A key factor in successful collaborations with streamers is identifying individuals who genuinely enjoy playing the game, as their authentic enthusiasm resonates more effectively with their audience. These examples illustrate that Twitch offers a powerful marketing avenue for indie developers, capable of yielding significant visibility and commercial success when approached strategically.
+
+Existing academic literature provides insights into the effectiveness of Twitch integrations, particularly within the esports domain. The WEAVR project, for instance, explored the use of cross-reality technologies to enhance esports broadcasts, integrating real-time data visualizations into live streams. Their findings indicated that viewers highly value such integrations, suggesting that data-driven features can deepen audience investment in live streamed content. Building on this, research by Block et al. focused on augmented reality overlays in esports, demonstrating that interactive elements like dynamic leaderboards and player statistics significantly enhance viewer comprehension and engagement by providing context to complex gameplay. A practical example of Twitch integration in action is the Dota 2 Twitch extension, which was evaluated during a major esports tournament and reached over 300,000 viewers. This extension provided real-time statistics and match highlights, revealing varied engagement patterns among viewers and underscoring the need for integration designs that cater to both casual and dedicated audiences. These studies collectively suggest that viewers appreciate and engage with interactive and data-rich content in live streams, a principle that could be effectively applied to indie games on Twitch.
+
+The relationship between developers and Twitch streamers is crucial for the successful adoption of Twitch-integrated game modes. Streamers act as influential figures who can significantly shape a game's visibility through their content. Their primary motivation for featuring a game is its potential to enhance their streams and provide engaging content for their viewers. Therefore, it is essential for developers to offer free and easily accessible tools, such as Twitch extensions or integrated features, that align with these streamer incentives. Social motivations, including a sense of community and opportunities for interaction, are significant drivers of engagement in live streaming environments. Streamers who cultivate a friendly and unique social atmosphere within their streams tend to foster higher viewer engagement. A critical aspect for indie developers to understand is the importance of approaching streamers as valuable partners in game promotion, offering beneficial integrations without expecting direct financial compensation from them. Misunderstandings in this dynamic, such as proposing to charge streamers for access to integrated features, can alienate these key influencers and negatively impact a game's potential reach.
+
+While the research on Twitch integrations in esports is extensive, there is a notable lack of specific guidance for indie developers on how to design game modes with Twitch features specifically aimed at boosting visibility and engagement during launch. Furthermore, the literature offers limited insights into navigating the social and economic dynamics between indie developers and Twitch streamers, a factor that is critical for ensuring the successful adoption of integrated features. Misconceptions among developers regarding streamer expectations highlight this gap in research. This study seeks to address these limitations by focusing on the development and testing of a prototype game mode with Twitch integration features in collaboration with an indie game company. The aim is to provide actionable technical and social insights that can help indie developers effectively leverage Twitch to increase their game's popularity.
+
+\section{Methodology}\label{sec:methods}
+
+This study adopts a design-based research approach, which involves an iterative process of user research, prototype development, and testing within an interaction design framework. This methodology is well-suited for addressing the research question as it allows for the creation and evaluation of a specific intervention (the Twitch-integrated game mode) in a real-world context.
+
+\subsection{Hypotheses}
+Based on the research questions and the design of the experiments, the following hypotheses are proposed:
+\begin{itemize}
+    \item Participants who play or watch the game with Twitch features enabled will be more likely to engage with the chat compared to those experiencing the game without Twitch features.
+    \item Participants who play or watch the game with Twitch features enabled will be more likely to express interest in streaming the game themselves.
+    \item Participants who play the game with Twitch features enabled will have a longer total play session duration compared to those without Twitch features.
+    \item Participants who play the game with Twitch features enabled will have shorter individual game runs, due to increased difficulty introduced by interactive Twitch features.
+\end{itemize}
+
+\subsection{Data Collection}
+The data collection for this study will employ a mixed-methods approach, combining surveys and experiments to gather comprehensive insights into the impact of Twitch integration.
+
+The survey methodology will target both gamers and Twitch viewers to understand their preferences and behaviors related to live streaming and interactive features. The survey will include demographic questions to ensure a diverse sample of participants. Specific questions will focus on participants' Twitch usage habits, their interest in interactive features during streams, and their perceptions of games that incorporate such features compared to those that do not. The survey questions will be designed to be clear, concise, and free of technical jargon to ensure they are easily understood by all participants. A mix of rating scales, such as Likert scales and numerical scales, will be used to quantify opinions and preferences, while open-ended questions will provide qualitative data on the motivations and perceptions underlying the quantitative responses. The survey will be pilot tested with a small group of participants to identify any potential issues with clarity or question design before wider distribution.
+
+The data gathered from the surveys will inform the design of the specific Twitch integration features implemented in the game. The current plan involves integrating viewer names into the game when a player is streaming on Twitch, and implementing a voting system that allows viewers to influence in-game events. The specific types of events that viewers can vote on will be determined based on the survey responses, with a potential focus on features that are perceived as enhancing engagement and creating dynamic streaming content.
+
+To evaluate the impact of these Twitch integration features, two main experiments are planned. The first experiment will involve participants playing the game both with and without the Twitch features enabled, employing an A/B testing approach. Participants will engage in a specific gameplay scenario for a set duration, and their in-game activity, particularly related to the Twitch features (e.g., voting participation), will be recorded. It is crucial to maintain a controlled environment where the presence or absence of the Twitch features is the only variable that differs between the two conditions. Determining a statistically significant sample size and an appropriate test duration will be essential to ensure the validity of the results.
+
+The second experiment will involve participants watching clips of gameplay that are either with or without the Twitch features visible. The content and duration of these clips will be carefully selected to showcase the integrated features in action. Utilizing unmoderated playthroughs for clip creation could provide more authentic examples of player interaction with the features. The length of the clips will be considered to ensure they are sufficient to convey the impact of the features without being overly long. Following both the playing and watching experiments, participants will be asked to rate the game based on their experience. Consistent rating scales will be used across both experiments to allow for direct comparison. The rating questionnaire will include questions designed to gauge participants' engagement, enjoyment, likelihood to recommend the game, and their perception of whether the Twitch features would boost the game's visibility.
+
+The metrics collected during these experiments will include session duration, specific in-game actions related to the Twitch features (e.g., number of votes cast, frequency of name appearances), and the ratings provided by participants on the post-experiment questionnaires. If live streaming with participant streamers is feasible, metrics such as unique viewers, average concurrent viewership, follower growth during the stream, and chat activity could also be collected. In-game analytics will track metrics like time spent playing and the utilization rate of the Twitch-integrated features.
+
+Participant recruitment will focus on individuals who are gamers and have some familiarity with the Twitch platform. Collaboration with Runic Dices Entertainment may facilitate access to their player base and relevant communities. Participants will be screened to ensure they meet the necessary criteria for the study, such as a minimum level of gaming experience or Twitch viewership. To encourage participation, incentives such as digital gift cards or in-game rewards will be considered. Throughout the data collection process, ethical considerations will be paramount. All participants will provide informed consent after receiving a clear explanation of the study's purpose, procedures, potential risks, and benefits. Data privacy and security will be maintained, and participants will be assured of anonymity and confidentiality. They will also be informed of their right to withdraw from the study at any time without penalty.
+
+\subsection{Data Analysis}
+The analysis of the survey data will involve both quantitative and qualitative methods. Quantitative data from the rating scales will be analyzed using statistical tests to identify any significant differences in perceptions or preferences between different groups of participants. For example, t-tests or ANOVA may be used to compare the ratings of games with and without Twitch features. Qualitative data from the open-ended survey questions will be analyzed using thematic analysis to identify recurring themes and patterns in participants' responses, providing deeper insights into their motivations and perceptions.
+
+For the experimental data, statistical tests will be used to compare the engagement metrics and game ratings between the conditions where Twitch features were enabled and disabled. Metrics such as the average duration of play sessions, the level of participation in Twitch-related in-game events (e.g., voting frequency), and the overall game ratings will be compared using appropriate statistical methods to determine if the presence of Twitch features has a statistically significant impact on these measures. The analysis will also explore potential correlations between different metrics, such as the relationship between the frequency of voting and overall engagement ratings.
+
+\section{Results}\label{sec:results}
+% TODO: Present survey findings (e.g., 70\% rated Twitch integrations 3-5/5, top benefits: enhanced engagement, real-time interaction).
+% Include tables/figures (e.g., bar chart of value ratings, pie chart of preferred features).
+% Add placeholders for experiment results (e.g., ``Results from A/B testing will be reported here once conducted'').
+
+\begin{table}[h]
+\centering
+\caption{Summary of Key Findings from Surveys and Experiments}
+\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+Research Question Element & Key Finding & Supporting Data (e.g., statistical significance, percentage) \\
+\hline
+What specific Twitch integration features enhance engagement? & (Placeholder for survey and experiment results) & (Placeholder for specific data) \\
+How do these features influence player perceptions? & (Placeholder for survey and experiment results) & (Placeholder for specific data) \\
+How do these features influence streamer perceptions? & (Placeholder for potential streamer feedback from collaboration) & (Placeholder for specific data) \\
+Does the game mode benefit indie game popularity? & (Placeholder for overall impact based on experiment results and ratings) & (Placeholder for specific data) \\
+How to navigate streamer dynamics for adoption? & (Placeholder for insights from literature and potential interactions) & (Placeholder for specific data) \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Discussion}\label{sec:discussion}
+% TODO: Interpret survey results in the context of your research questions (e.g., how they support Twitch's potential for indie games).
+% Discuss implications for indie developers (e.g., low-cost marketing via Twitch).
+% Address limitations (e.g., survey sample size, self-reported data).
+% Placeholder for experiment discussion (e.g., ``This section will compare experimental outcomes to survey predictions'').
+
+The survey results, once analyzed, will provide valuable insights into the preferences of gamers and Twitch viewers regarding interactive features in live streams. These findings will help to understand which specific Twitch integration features, such as viewer name integration and voting for in-game events, are most likely to enhance viewer engagement with indie games. The data will reveal the extent to which viewers value these types of interactive elements and the reasons behind their preferences. This will directly address the research question of what specific Twitch integration features are most effective.
+
+The outcomes of the experiments, comparing gameplay and game ratings with and without the Twitch features, will offer a direct assessment of the impact of these integrations on perceived engagement and enjoyment. By analyzing the metrics collected, such as session duration and participation in voting events, it will be possible to quantify the effect of these features on player behavior. Furthermore, the game ratings provided by participants in both the playing and watching experiments will indicate whether the presence of Twitch features enhances the overall perception of the game. Comparing the experiences of those who actively played the game with the features versus those who watched clips will shed light on the different ways in which these integrations are perceived in active versus passive viewing scenarios. This comparative analysis will contribute to understanding how these features influence player perceptions.
+
+The implications of these findings for indie game developers could be significant. If the results indicate a positive impact of Twitch integrations on viewer engagement and game perception, this would suggest that leveraging such features can be a valuable low-cost marketing and audience engagement strategy. For indie developers with limited marketing budgets, effectively utilizing Twitch's interactive capabilities could provide a means to increase their game's visibility and attract a larger audience. However, it is also important to consider the ethical implications of using Twitch for marketing purposes, ensuring transparency with viewers about the nature of the integrations and avoiding any manipulative practices.
+
+Several limitations of this study will need to be considered when interpreting the results. The sample size of the surveys and experiments may impact the generalizability of the findings. The study will focus on a specific indie game genre, and the effectiveness of Twitch integrations may vary across different types of games. Additionally, the reliance on self-reported data through surveys and questionnaires is subject to potential biases in participants' responses. Future research could benefit from incorporating more objective measures of engagement, such as biometric data (e.g., eye tracking, heart rate) or more detailed in-game analytics, to provide a more comprehensive understanding of the impact of Twitch integrations.
+
+Finally, the experimental outcomes will be compared to the initial predictions made based on the literature review. The hypothesis that integrating interactive Twitch features, combined with an understanding of streamer incentives, will increase viewer engagement, streamer interest, and game visibility will be evaluated against the collected data. Any discrepancies between the predicted and observed outcomes will be discussed, providing further insights into the complex relationship between Twitch integration, viewer engagement, and indie game popularity.
+
+A key area to explore further is the potential divergence in engagement and perception between individuals actively playing a game with integrated Twitch features and those passively observing gameplay with the same features. The experience of directly interacting with the game and the Twitch elements might differ significantly from the experience of watching someone else do so. Analyzing these potential differences could yield valuable insights into the most effective ways to design and implement such integrations to maximize their impact on both players and viewers. Furthermore, the effectiveness of Twitch integrations may be contingent upon the specific genre of the indie game. Certain game genres might be inherently more suited to particular types of interactive features than others. For instance, games with strong narrative elements might find greater success with viewer voting on story paths, while competitive multiplayer games could see more engagement through real-time leaderboards or viewer-driven challenges. Considering the role of game genre could lead to more tailored recommendations for indie developers. It is also important to acknowledge the inherent limitations of relying solely on self-reported data. While surveys and questionnaires provide valuable insights into player perceptions and attitudes, they may not always accurately reflect actual engagement levels or behaviors. Future research could enhance the robustness of the findings by incorporating more objective measures of engagement. This could include the use of biometric sensors to track physiological responses during gameplay or the analysis of detailed in-game analytics to monitor player interactions with the integrated Twitch features. Combining subjective and objective data could provide a more nuanced and comprehensive understanding of the true impact of Twitch integrations.
+
+\section{Conclusion}\label{sec:conclusion}
+% TODO: Summarize key survey findings (e.g., Twitch integrations are valued for engagement).
+% Restate contributions (e.g., practical game mode design for indie devs).
+% Suggest future research (e.g., longitudinal studies on Twitch-integrated game success).
+% Placeholder for experiment conclusions.
+
+The key findings of this study, once the data analysis is complete, will provide a comprehensive answer to the central research question: whether a game mode specifically designed around Twitch integrations benefits the popularity of an indie game. The survey results will identify the specific Twitch integration features that are most valued by gamers and viewers, offering insights into what types of interactive elements are likely to enhance engagement. The experimental outcomes will quantify the impact of these features on player behavior and perceptions, as well as on the overall rating and perceived visibility boost of the game.
+
+This thesis aims to contribute to the existing body of knowledge by providing practical insights for indie game developers looking to leverage Twitch for marketing and audience engagement. By developing and evaluating a prototype game mode with Twitch integration, this research will offer actionable recommendations on how to design and implement such features effectively. The study will also shed light on the dynamics between developers and Twitch streamers, providing guidance on how to foster positive collaborations that maximize the adoption and impact of Twitch-integrated game modes.
+
+Future research could build upon the findings of this study in several ways. Longitudinal studies could investigate the long-term impact of Twitch-integrated games on sustained visibility and player retention. Exploring the effectiveness of different types of interactive features beyond viewer name integration and basic voting could also yield valuable insights. Additionally, research focusing on the specific impact of Twitch integrations on different indie game genres would help to tailor strategies for developers working on a variety of game types. Finally, further investigation into the optimal ways for developers to engage with the Twitch streamer community could lead to the development of best practices for successful collaborations.
+
+The successful completion of this research would not have been possible without the collaboration of Runic Dices Entertainment, whose partnership provided the necessary context and resources for the development and testing of the Twitch-integrated game mode. Their support and insights have been invaluable to this project.
+
+\section{References}
+\bibliographystyle{IEEEtran}
+\bibliography{bib}
+
+\section{Appendices}
+\subsection{Literature Search Details}
+The literature review was conducted using the following keywords: ``Twitch integration,'' ``viewer engagement,'' ``indie game visibility,'' ``esports analytics,'' ``streamer influence,'' ``interactive game modes,'' ``live streaming platforms,'' ``Dota 2 Twitch extensions,'' and ``data-driven storytelling.'' Databases included ACM Digital Library, IEEE Xplore, and Google Scholar. Inclusion criteria prioritized peer-reviewed articles, conference proceedings, and whitepapers published between 2014 and 2025, focusing on interactive streaming features and their impact on audience engagement.
+\subsection{Initial Survey Questionnaire}
+Below are the questions used in the initial survey to gather background information and attitudes toward Twitch integrations:
+\begin{enumerate}
+    \item Age group
+    \item Gender (optional)
+    \item Country of residence
+    \item Do you stream on Twitch or YouTube?
+    \item What is your channel/account name? (Optional)
+    \item Have you streamed with games that have Twitch integration options?
+    \item How much did the Twitch integrations help boost engagement?
+    \item What game(s) did you stream with integrations? (optional)
+    \item How often do you watch Twitch streams?
+    \item For how long do you watch Twitch streams?
+    \item How often do you interact with chat during streams?
+    \item If integration features were enabled, how often have you used them?
+    \item Do you donate to streamers? (Select all that apply)
+    \item Do you have a favorite streamer?
+    \item Who is your favorite streamer?
+    \item On a scale from 1 (not valuable) to 5 (extremely valuable), how valuable do you think integrating Twitch features into games is?
+    \item What benefits do you think Twitch integrations offer to the gaming experience? (Select all that apply)
+    \item What kind of Twitch integration features would you like to see more?
+    \item Have you ever played a game that incorporated Twitch integrations?
+    \item [If yes] How did these interactions affect your overall enjoyment with the game?
+    \item What interaction features did you use? (voting, username in game, etc) (optional)
+    \item Please describe your experience. What was enjoyable and what was annoying? (optional)
+    \item Would you be more likely to try or purchase a game that features Twitch integrations?
+    \item Do you have any comments you would like to add? I would be happy to read them! (optional)
+\end{enumerate}
+
+\subsection{Playing the Game with Twitch Features Questionnaire}
+Below are the questions used for participants who played the game with Twitch features enabled:
+\begin{enumerate}
+    \item Timestamp
+    \item How likely are you to recommend the game to friends?
+    \item Favorite Feature - What did you enjoy the most?
+    \item What could be improved? - Share any thoughts on how we can enhance the game
+    \item Would you like to play this game again in the future?
+\end{enumerate}
+
+\subsection{Playing the Game without Twitch Features Questionnaire}
+Below are the questions used for participants who played the game without Twitch features:
+\begin{enumerate}
+    \item Timestamp
+    \item Your Discord Tag
+    \item How likely are you to recommend the game to friends?
+    \item Favorite Feature - What did you enjoy the most?
+    \item What could be improved? - Share any thoughts on how we can enhance the game
+    \item Would you like to play this game again in the future?
+    \item Want to stay updated or participate more? Leave your email
+    \item Have you joined the Discord channel?\\
+    If you haven't joined yet, scan here!
+\end{enumerate}
+
+\subsection{Watching Gameplay with Twitch Features Questionnaire}
+Below are the questions used for participants who watched gameplay videos with Twitch features enabled:
+\begin{enumerate}
+    \item Timestamp
+    \item Discord tag (optional)
+    \item Do you stream? (Twitch, YouTube, X, etc.)
+    \item Do you watch streams?
+    \item How likely would you be to watch a live stream of this game?
+    \item How likely are you to participate in the chat if a streamer is playing this game?
+    \item How engaging did you find this gameplay?
+    \item How likely would you be to recommend this game to a friend based on this video?
+    \item The new Twitch features allow viewers to vote for extra events that happen in the game, such as modifying the game speed, spawning extra enemies or starting weather effects beyond their usual start time.\\
+    Considering the above description, how well did the video convey this understanding?
+    \item How much did the Twitch features (e.g., voting, viewer names) add to your viewing experience?
+    \item If you were to stream this game yourself, how likely would you be to use the Twitch integration features?
+    \item What, if anything, did you dislike or find confusing?
+    \item Do you have any suggestions for improving the viewing experience or the game itself?
+    \item If you have any comments, or notes you would like to share, please write them here.
+\end{enumerate}
+
+\subsection{Watching Gameplay without Twitch Features Questionnaire}
+Below are the questions used for participants who watched gameplay videos without Twitch features:
+\begin{enumerate}
+    \item Timestamp
+    \item Discord tag (optional)
+    \item Do you stream? (Twitch, YouTube, X, etc.)
+    \item Do you watch streams?
+    \item How likely would you be to watch a live stream of this game?
+    \item How likely are you to participate in the chat if a streamer is playing this game?
+    \item How engaging did you find this gameplay?
+    \item How likely would you be to recommend this game to a friend based on this video?
+    \item The genre of the game is a mix of hack'n'slash and bullet hell. During the game, the player can gain access to more weapons during the level up menu, and a gambling ring. The player can increase their stats, by picking up items dropped by monsters, or from the level up menu, or from the gamble ring. The player is supposed to survive for 10 min of enemy waves spawning, before the final boss shows up.\\
+    Considering the above description, how well did the video convey this understanding?
+    \item What, if anything, did you dislike or find confusing?
+    \item Do you have any suggestions for improving the viewing experience or the game itself?
+    \item If you have any comments, or notes you would like to share, please write them here.
+\end{enumerate}
+
+\subsection{Initial Survey Data}
+
+\subsection{Regular Game Survey Data}
+
+\subsection{Twitch Integrated Game Survey Data}
+
+\end{document}
